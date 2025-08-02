@@ -40,9 +40,11 @@ func _physics_process(delta):
 			move_and_slide()
 			has_teleported = false
 
+func caught():
+	return agent.distance_to_target() < 1.1
 
 func move_along_path(delta):
-	if agent.is_navigation_finished():
+	if caught():
 		print("gameOver")
 		return
 	var next_point = agent.get_next_path_position()
