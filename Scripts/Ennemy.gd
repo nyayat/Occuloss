@@ -4,18 +4,19 @@ extends CharacterBody3D
 @export var player: CharacterBody3D
 @export var camera: Camera3D
 
-
 var agent: NavigationAgent3D
 var has_teleported := false
 var teleport_pause := false
 var teleport_delay := 2.5  # seconds to wait after teleport
 var teleport_timer := 0.0
 
+
 func _ready():
 	agent = $NavigationAgent3D
 	agent.target_position = global_transform.origin  # Stay still initially
 	#player = get_node("FPPlayer")
 	#camera = get_node("Camera3D")
+
 
 func _physics_process(delta):
 	if teleport_pause:
@@ -38,7 +39,8 @@ func _physics_process(delta):
 			velocity = Vector3.ZERO
 			move_and_slide()
 			has_teleported = false
-		
+
+
 func move_along_path(delta):
 	if agent.is_navigation_finished():
 		print("gameOver")
@@ -48,19 +50,24 @@ func move_along_path(delta):
 	velocity = direction * speed
 	move_and_slide()
 
+
 func move_enemy(delta):
 	# Move toward player or along a predefined path
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction * speed
 	move_and_slide()
-	
+
+
 func is_visible_line_of_sight() -> bool:
 	var space_state = get_world_3d().direct_space_state
-	var ray_params = PhysicsRayQueryParameters3D.create(camera.global_transform.origin,global_transform.origin)
-	ray_params.exclude = [camera, self] # Optional: ignore self/camera
+	var ray_params = PhysicsRayQueryParameters3D.create(
+		camera.global_transform.origin, global_transform.origin
+	)
+	ray_params.exclude = [camera, self]  # Optional: ignore self/camera
 	var result = space_state.intersect_ray(ray_params)
-	
+
 	return result.is_empty()
+
 
 func is_seen_by_camera() -> bool:
 	# 1. Check if enemy is in front of the camera
@@ -71,16 +78,17 @@ func is_seen_by_camera() -> bool:
 	# 2. Check angle between camera forward and direction to enemy
 	var cam_forward = -camera.global_transform.basis.z
 	var dot = cam_forward.normalized().dot(to_enemy.normalized())
-	
+
 	# If dot > cos(FOV / 2), then it's in field of view
-	var fov_threshold = cos(deg_to_rad(camera.fov ))
+	var fov_threshold = cos(deg_to_rad(camera.fov))
 	return dot > fov_threshold and is_visible_line_of_sight()
-	
+
+
 func teleport_around_player():
 	var nav_map = get_world_3d().navigation_map
 	var player_pos = player.global_transform.origin
 	var cam_forward = -camera.global_transform.basis.z.normalized()
-	
+
 	var current_pos = global_transform.origin
 	var to_player = current_pos - player_pos
 	to_player.y = 0
@@ -95,9 +103,13 @@ func teleport_around_player():
 
 		var dir_to_pos = (nav_pos - player_pos).normalized()
 		var dot = cam_forward.dot(dir_to_pos)
-		
+
 		# dot > 0 = in front; dot < 0 = behind. Reject if too far in front (e.g. dot > 0.5)
-		if dot < 0.5 and nav_pos.distance_to(player_pos) >= distance * 0.95 and nav_pos.distance_to(player_pos) <= distance * 1.05:
+		if (
+			dot < 0.5
+			and nav_pos.distance_to(player_pos) >= distance * 0.95
+			and nav_pos.distance_to(player_pos) <= distance * 1.05
+		):
 			global_transform.origin = nav_pos
 			agent.target_position = player.global_transform.origin
 			print("Enemy teleported behind player to:", nav_pos)
