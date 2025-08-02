@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gd_files=$(git diff --name-only --diff-filter=d | grep '\.gd$')
+gd_files=$(git diff --cached --name-only --diff-filter=d | grep '\.gd$')
 
 # Check if there are any .gd files
 if [[ -z "$gd_files" ]]; then
