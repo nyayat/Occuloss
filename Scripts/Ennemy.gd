@@ -40,8 +40,10 @@ func _physics_process(delta):
 			move_and_slide()
 			has_teleported = false
 
+
 func caught():
 	return agent.distance_to_target() < 1.1
+
 
 func move_along_path(delta):
 	if caught():
