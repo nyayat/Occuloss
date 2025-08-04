@@ -1,11 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://8ndhyxhd6shg"]
+[gd_scene load_steps=10 format=3 uid="uid://8ndhyxhd6shg"]
 
 [ext_resource type="Script" uid="uid://cg254yafrnc7p" path="res://Scripts/FirstPerson.gd" id="1_xvb4y"]
 [ext_resource type="Script" uid="uid://bxhc30251ktjy" path="res://Scripts/Ennemy.gd" id="2_ftrsn"]
+[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/ViewShader.gdshader" id="2_q8l06"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8aik"]
+shader = ExtResource("2_q8l06")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 191.2
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 375.0
+shader_parameter/grainIntensity = 0.025
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ftrsn"]
 vertices = PackedVector3Array(8.55149, -0.544334, -5.07004, 8.55149, -0.544334, -29.57, -29.6985, -0.544334, -29.57, -29.6985, -0.544334, -5.07004, 10.5515, -0.544334, -5.07004, 10.8015, -0.544334, -3.82004, 25.5515, -0.544334, -3.82004, 25.5515, -0.544334, -29.57, 26.8015, 28.9557, 29.18, 26.8015, 28.9557, -29.57, 26.5515, 28.9557, 29.18, 29.5515, 28.9557, 29.68, -29.6985, 28.9557, 29.43, 27.8015, -0.544334, -29.57, 27.8015, -0.544334, 28.43, 29.5515, -0.544334, 28.43, 29.5515, -0.544334, -29.57, 10.5515, -0.544334, -2.82004, 25.5515, -0.544334, 28.43, -29.6985, -0.544334, -2.82004, -29.6985, -0.544334, 28.43)
@@ -49,10 +64,15 @@ light_color = Color(0.89, 0.883473, 0.7921, 1)
 light_energy = 1.564
 light_size = 1.0
 light_specular = 5.423
-spot_range = 8.0
+spot_range = 15.0
 spot_attenuation = 0.45
 spot_angle = 52.5
 spot_angle_attenuation = 1.7411
+
+[node name="ColorRect" type="ColorRect" parent="FPPlayer/Camera3D"]
+material = SubResource("ShaderMaterial_c8aik")
+offset_right = 1154.0
+offset_bottom = 645.0
 
 [node name="Ennemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player", "camera", "spot_light")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.8416)
