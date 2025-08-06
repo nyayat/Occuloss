@@ -1,9 +1,8 @@
 extends CharacterBody3D
 
-@export var speed: float = 5.0
-@export var player: CharacterBody3D
-@export var camera: Camera3D
-@export var spot_light: SpotLight3D
+var speed: float = 2.0
+var player: CharacterBody3D
+var camera: Camera3D
 
 var agent: NavigationAgent3D
 var has_teleported := false
@@ -22,7 +21,17 @@ func _ready():
 	agent = $NavigationAgent3D
 	agent.target_position = global_transform.origin  # Stay still initially
 	#player = get_node("FPPlayer")
-	#camera = get_node("Camera3D")
+	for node in get_tree().get_nodes_in_group("Player"):
+		if node is CharacterBody3D:
+			player = node
+			break
+	
+	camera = player.get_node("Camera3D")
+	if not camera:
+		for child in player.get_children():
+			if child is Camera3D:
+				camera = child
+				break
 	
 	for element in get_all_children(get_tree().get_root()):
 		if element is SpotLight3D:
@@ -36,6 +45,8 @@ func is_under_any_spotlight() -> bool:
 	return false
 
 func is_under_spotlight(light: SpotLight3D) -> bool:
+	if light.light_energy <= 0:
+		return false
 	var light_pos = light.global_transform.origin
 	var light_dir = -light.global_transform.basis.z.normalized()
 	var to_enemy = global_transform.origin - light_pos
@@ -88,7 +99,7 @@ func caught():
 
 func move_along_path(delta):
 	if caught():
-		print("gameOver")
+		# print("gameOver")
 		return
 	var next_point = agent.get_next_path_position()
 	var direction = (next_point - global_transform.origin).normalized()

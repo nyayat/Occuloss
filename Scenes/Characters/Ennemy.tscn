@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd1isrgkxku2g"]
+
+[ext_resource type="Script" uid="uid://bxhc30251ktjy" path="res://Scripts/Ennemy.gd" id="1_d1dyc"]
+[ext_resource type="PackedScene" uid="uid://b8nvx51ml8ogq" path="res://Assets/kaykit_character_pack_skeletons/Characters/gltf/Skeleton_Minion.glb" id="2_trlos"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
+
+[node name="Ennemy" type="CharacterBody3D"]
+script = ExtResource("1_d1dyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_t7fwh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_t7fwh")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Skeleton_Minion" parent="." instance=ExtResource("2_trlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.905767, 0)

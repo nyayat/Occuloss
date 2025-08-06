@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhtwf780j0hnm"]
+
+[ext_resource type="Script" uid="uid://cg254yafrnc7p" path="res://Scripts/FirstPerson.gd" id="1_0el0d"]
+[ext_resource type="Script" uid="uid://bwg4oabdl8q7f" path="res://Scripts/SpotLightPlayer.gd" id="2_7pt4t"]
+[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/ViewShader.gdshader" id="2_o5en2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8aik"]
+shader = ExtResource("2_o5en2")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 191.2
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 375.0
+shader_parameter/grainIntensity = 0.025
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
+
+[node name="FPPlayer" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_0el0d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_t7fwh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_t7fwh")
+
+[node name="Vision" type="Node" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="Vision"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, -0.213655)
+target_position = Vector3(0, -10, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.8, 0)
+fov = 60.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.973881, -0.227059, 0, 0.227059, 0.973881, 0, 0.0591946, 0.00622034)
+light_color = Color(0.89, 0.883473, 0.7921, 1)
+light_energy = 1.564
+light_size = 1.0
+light_specular = 5.423
+spot_range = 15.0
+spot_attenuation = 0.45
+spot_angle = 52.5
+spot_angle_attenuation = 1.7411
+script = ExtResource("2_7pt4t")
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D"]
+material = SubResource("ShaderMaterial_c8aik")
+offset_right = 1154.0
+offset_bottom = 645.0

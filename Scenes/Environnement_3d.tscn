@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwom3fpx6q7bs"]
+
+[ext_resource type="PackedScene" uid="uid://du56or8dv60ap" path="res://Assets/kaykit_halloween_bits/gltf/floor_dirt.gltf" id="1_80orc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7fwh"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvb4y"]
+size = Vector3(100, 1, 100)
+
+[node name="Environnement3D" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_t7fwh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+visible = false
+mesh = SubResource("BoxMesh_xvb4y")
+
+[node name="floor_dirt2" parent="Ground" instance=ExtResource("1_80orc")]
+transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0.103972, 0)

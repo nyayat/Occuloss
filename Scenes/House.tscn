@@ -1,36 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ndhyxhd6shg"]
+[gd_scene load_steps=5 format=3 uid="uid://8ndhyxhd6shg"]
 
-[ext_resource type="Script" uid="uid://cg254yafrnc7p" path="res://Scripts/FirstPerson.gd" id="1_xvb4y"]
-[ext_resource type="Script" uid="uid://bxhc30251ktjy" path="res://Scripts/Ennemy.gd" id="2_ftrsn"]
-[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/ViewShader.gdshader" id="2_q8l06"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8aik"]
-shader = ExtResource("2_q8l06")
-shader_parameter/shake = 0.015
-shader_parameter/noiseQuality = 191.2
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.1
-shader_parameter/pixelSize = 375.0
-shader_parameter/grainIntensity = 0.025
-shader_parameter/use_overlay = true
-shader_parameter/use_lens_distortion = true
-shader_parameter/overlay_color = Color(1, 1, 1, 10)
-shader_parameter/lens_distortion_strength = 0.0
+[ext_resource type="PackedScene" uid="uid://bhtwf780j0hnm" path="res://Scenes/Characters/Player.tscn" id="1_ftrsn"]
+[ext_resource type="PackedScene" uid="uid://dd1isrgkxku2g" path="res://Scenes/Characters/ennemy.tscn" id="2_q8l06"]
+[ext_resource type="PackedScene" uid="uid://bwom3fpx6q7bs" path="res://Scenes/Environnement_3d.tscn" id="3_q8l06"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ftrsn"]
-vertices = PackedVector3Array(8.55149, -0.544334, -5.07004, 8.55149, -0.544334, -29.57, -29.6985, -0.544334, -29.57, -29.6985, -0.544334, -5.07004, 10.5515, -0.544334, -5.07004, 10.8015, -0.544334, -3.82004, 25.5515, -0.544334, -3.82004, 25.5515, -0.544334, -29.57, 26.8015, 28.9557, 29.18, 26.8015, 28.9557, -29.57, 26.5515, 28.9557, 29.18, 29.5515, 28.9557, 29.68, -29.6985, 28.9557, 29.43, 27.8015, -0.544334, -29.57, 27.8015, -0.544334, 28.43, 29.5515, -0.544334, 28.43, 29.5515, -0.544334, -29.57, 10.5515, -0.544334, -2.82004, 25.5515, -0.544334, 28.43, -29.6985, -0.544334, -2.82004, -29.6985, -0.544334, 28.43)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 1), PackedInt32Array(4, 0, 1), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(16, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(5, 6, 17), PackedInt32Array(17, 6, 18), PackedInt32Array(19, 17, 20), PackedInt32Array(20, 17, 18)]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_t7fwh"]
-size = Vector3(60, 1, 60)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xvb4y"]
-size = Vector3(60, 1, 60)
+vertices = PackedVector3Array(-99.5, 0, -99.5, -99.5, 0, 99.5, 99.5, 0, 99.5, 99.5, 0, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node"]
 
@@ -38,95 +14,15 @@ size = Vector3(60, 1, 60)
 transform = Transform3D(1, 0, 0, 0, -0.0604214, 0.998173, 0, -0.998173, -0.0604214, 0, 18.6174, 0)
 visible = false
 
-[node name="FPPlayer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.7386)
-script = ExtResource("1_xvb4y")
+[node name="FPPlayer" parent="." instance=ExtResource("1_ftrsn")]
+transform = Transform3D(-0.739901, 0, -0.672715, 0, 1, 0, 0.672715, 0, -0.739901, 0, 0, -33.3717)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FPPlayer"]
-mesh = SubResource("CapsuleMesh_t7fwh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FPPlayer"]
-shape = SubResource("CapsuleShape3D_t7fwh")
-
-[node name="Vision" type="Node" parent="FPPlayer"]
-
-[node name="RayCast3D" type="RayCast3D" parent="FPPlayer/Vision"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.8, -0.213655)
-target_position = Vector3(0, -10, 0)
-
-[node name="Camera3D" type="Camera3D" parent="FPPlayer"]
-transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.8, 0)
-fov = 60.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="FPPlayer/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.973881, -0.227059, 0, 0.227059, 0.973881, 0, 0.0591946, 0.00622034)
-light_color = Color(0.89, 0.883473, 0.7921, 1)
-light_energy = 1.564
-light_size = 1.0
-light_specular = 5.423
-spot_range = 15.0
-spot_attenuation = 0.45
-spot_angle = 52.5
-spot_angle_attenuation = 1.7411
-
-[node name="ColorRect" type="ColorRect" parent="FPPlayer/Camera3D"]
-material = SubResource("ShaderMaterial_c8aik")
-offset_right = 1154.0
-offset_bottom = 645.0
-
-[node name="Ennemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player", "camera", "spot_light")]
+[node name="Ennemy" parent="." instance=ExtResource("2_q8l06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.8416)
-script = ExtResource("2_ftrsn")
-player = NodePath("../FPPlayer")
-camera = NodePath("../FPPlayer/Camera3D")
-spot_light = NodePath("../FPPlayer/Camera3D/SpotLight3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ennemy"]
-mesh = SubResource("CapsuleMesh_t7fwh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ennemy"]
-shape = SubResource("CapsuleShape3D_t7fwh")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Ennemy"]
 
 [node name="Environnement" type="Node" parent="."]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Environnement"]
 navigation_mesh = SubResource("NavigationMesh_ftrsn")
 
-[node name="WALL3" type="StaticBody3D" parent="Environnement/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 0.00272251, -0.999996, 0, 0.999996, 0.00272251, -19.9485, -14.5291, -3.89828)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environnement/NavigationRegion3D/WALL3"]
-shape = SubResource("BoxShape3D_t7fwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environnement/NavigationRegion3D/WALL3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.014)
-mesh = SubResource("BoxMesh_xvb4y")
-
-[node name="WALL2" type="StaticBody3D" parent="Environnement/NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 26.7569, -1.5, -0.0700417)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environnement/NavigationRegion3D/WALL2"]
-shape = SubResource("BoxShape3D_t7fwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environnement/NavigationRegion3D/WALL2"]
-mesh = SubResource("BoxMesh_xvb4y")
-
-[node name="WALL1" type="StaticBody3D" parent="Environnement/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.5, 29.6263)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environnement/NavigationRegion3D/WALL1"]
-shape = SubResource("BoxShape3D_t7fwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environnement/NavigationRegion3D/WALL1"]
-mesh = SubResource("BoxMesh_xvb4y")
-
-[node name="Ground" type="StaticBody3D" parent="Environnement/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environnement/NavigationRegion3D/Ground"]
-shape = SubResource("BoxShape3D_t7fwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environnement/NavigationRegion3D/Ground"]
-mesh = SubResource("BoxMesh_xvb4y")
+[node name="Environnement3D" parent="Environnement/NavigationRegion3D" instance=ExtResource("3_q8l06")]

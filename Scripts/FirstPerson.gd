@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 @onready var camera_3d = $Camera3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 2.5
+#const JUMP_VELOCITY = 4.5
 const CAMERA_SENS = 0.003
 const CONTROLLER_SENS = 2.0
 
@@ -44,8 +44,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("jump") and is_on_floor():
+	#	velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
