@@ -1,6 +1,14 @@
-[gd_scene format=3 uid="uid://bx5j6vmfk10hv"]
+[gd_scene load_steps=2 format=3 uid="uid://bx5j6vmfk10hv"]
+
+[ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="1_1g5mp"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 723.0
+texture = ExtResource("1_1g5mp")
+expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 1280.0

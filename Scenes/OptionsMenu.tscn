@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl0l7pxwq7rrs"]
+[gd_scene load_steps=5 format=3 uid="uid://bl0l7pxwq7rrs"]
 
 [ext_resource type="Script" uid="uid://bmo4rrcocxynh" path="res://Scripts/Settings.gd" id="1_1jju4"]
+[ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="2_1jju4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jrbyj"]
 
@@ -8,6 +9,12 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_1jju4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 723.0
+texture = ExtResource("2_1jju4")
+expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 1280.0
