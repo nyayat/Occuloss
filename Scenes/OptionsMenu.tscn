@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl0l7pxwq7rrs"]
+
+[ext_resource type="Script" uid="uid://bmo4rrcocxynh" path="res://Scripts/Settings.gd" id="1_1jju4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1jju4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1280.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 52
+text = "Options effrayante"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 146.0
+offset_top = 146.0
+offset_right = 1142.0
+offset_bottom = 662.0
+theme_override_constants/h_separation = 284
+theme_override_constants/v_separation = 84
+
+[node name="Volume" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="GridContainer/Volume"]
+layout_mode = 2
+text = "Volume"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="GridContainer/Volume"]
+custom_minimum_size = Vector2(300, 26.978)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Info" type="RichTextLabel" parent="GridContainer/Volume"]
+layout_mode = 2
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Peur" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="GridContainer/Peur"]
+layout_mode = 2
+text = "Peur"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="GridContainer/Peur"]
+custom_minimum_size = Vector2(300, 26.978)
+layout_mode = 2
+value = 90.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Fun" type="HBoxContainer" parent="GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="GridContainer/Fun"]
+layout_mode = 2
+text = "Fun"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="GridContainer/Fun"]
+custom_minimum_size = Vector2(300, 26.978)
+layout_mode = 2
+value = 75.0
+allow_greater = true
+
+[connection signal="value_changed" from="GridContainer/Volume/HSlider" to="." method="_on_volume_slider_changed"]
+[connection signal="value_changed" from="GridContainer/Peur/HSlider" to="." method="_on_fear_slider_changed"]
+[connection signal="value_changed" from="GridContainer/Fun/HSlider" to="." method="_on_fun_slider_changed"]

@@ -8,7 +8,7 @@ func _on_play_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	switcher.switch_scene("res://Scenes/Options.tscn")
+	switcher.switch_scene("res://Scenes/OptionsMenu.tscn")
 
 
 func _on_quit_pressed() -> void:

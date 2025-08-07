@@ -1,4 +1,4 @@
-extends Node
+class_name Context extends Node
 
 ## Current scene loaded
 var _current_scene_path
@@ -35,12 +35,11 @@ func switch_scene(path: String, pause: bool = false) -> Error:
 	return get_tree().change_scene_to_file(path)
 
 
-## Return to last screen.
+## Return to previous screen.
 ## For paused scenes, we overwrite the current one to restore the initial state.
-func return_to_last(was_paused: bool = false) -> Error:
+func return_to_previous(was_paused: bool = false) -> Error:
 	if _history.is_empty():
-		exit_game()
-		return Error.OK
+		return Error.ERR_DOES_NOT_EXIST
 
 	_current_scene_path = _history.pop_back()
 
