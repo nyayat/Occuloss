@@ -19,3 +19,10 @@ vertical_alignment = 1
 offset_top = 146.0
 offset_right = 1279.0
 offset_bottom = 720.0
+
+[node name="MenuReturn" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Retour au menu principal"
+
+[connection signal="pressed" from="GridContainer/MenuReturn" to="." method="_on_menu__return_button_pressed"]

@@ -9,5 +9,5 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("pause"):
 		ctx.switch_scene("res://Scenes/PauseMenu.tscn", true)

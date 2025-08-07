@@ -12,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
-	print(Input.get_mouse_mode())
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

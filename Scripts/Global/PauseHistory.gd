@@ -15,8 +15,7 @@ func _ready() -> void:
 
 ## Switch to a different scene.
 ## If it's a pause, we suspend the current scene and store, so we can save the current state.
-func switch_scene(path: String, pause: bool = false) -> Error:
-	print(_current_scene_path)
+func switch_scene(path: NodePath, pause: bool = false) -> Error:
 	_history.push_back(_current_scene_path)
 
 	if pause:
