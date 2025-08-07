@@ -11,11 +11,13 @@ var teleport_delay := 2.5  # seconds to wait after teleport
 var teleport_timer := 0.0
 var visible_lights: Array[SpotLight3D] = []
 
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():
 		array = get_all_children(child, array)
 	return array
+
 
 func _ready():
 	agent = $NavigationAgent3D
@@ -25,14 +27,14 @@ func _ready():
 		if node is CharacterBody3D:
 			player = node
 			break
-	
+
 	camera = player.get_node("Camera3D")
 	if not camera:
 		for child in player.get_children():
 			if child is Camera3D:
 				camera = child
 				break
-	
+
 	for element in get_all_children(get_tree().get_root()):
 		if element is SpotLight3D:
 			visible_lights.append(element)
@@ -43,6 +45,7 @@ func is_under_any_spotlight() -> bool:
 		if is_under_spotlight(light):
 			return true
 	return false
+
 
 func is_under_spotlight(light: SpotLight3D) -> bool:
 	if light.light_energy <= 0:
@@ -71,18 +74,17 @@ func is_under_spotlight(light: SpotLight3D) -> bool:
 	return false
 
 
-
 func _physics_process(delta):
 	if teleport_pause:
 		teleport_timer -= delta
 		if teleport_timer <= 0.0:
 			teleport_pause = false
 	else:
-		if (is_seen_by_camera() and is_under_any_spotlight()):
+		if is_seen_by_camera() and is_under_any_spotlight():
 			velocity = Vector3.ZERO
 			move_and_slide()
 			has_teleported = false
-		else : 
+		else:
 			if not has_teleported:
 				teleport_around_player()
 				has_teleported = true
@@ -90,14 +92,13 @@ func _physics_process(delta):
 				teleport_timer = teleport_delay
 			agent.target_position = player.global_transform.origin
 			move_along_path(delta)
-			
 
 
 func caught():
 	return agent.distance_to_target() < 1.1
 
 
-func move_along_path(delta):
+func move_along_path(_delta):
 	if caught():
 		# print("gameOver")
 		return
@@ -107,7 +108,7 @@ func move_along_path(delta):
 	move_and_slide()
 
 
-func move_enemy(delta):
+func move_enemy(_delta):
 	# Move toward player or along a predefined path
 	var direction = (player.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction * speed

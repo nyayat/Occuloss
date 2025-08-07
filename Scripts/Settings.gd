@@ -24,11 +24,11 @@ func _on_volume_slider_changed(value: float) -> void:
 	volume_info.set_text(str(volume_slider.value * 100).pad_decimals(0) + "%")
 
 
-func _on_fear_slider_changed(value: float) -> void:
+func _on_fear_slider_changed(_value: float) -> void:
 	pass
 
 
-func _on_fun_slider_changed(value: float) -> void:
+func _on_fun_slider_changed(_value: float) -> void:
 	pass
 
 
