@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _on_play_pressed() -> void:
-	ctx.switch_scene("res://Scenes/House.tscn")
+	ctx.switch_scene("res://Scenes/Explanations.tscn")
 
 
 func _on_options_pressed() -> void:

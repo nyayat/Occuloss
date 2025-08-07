@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsiarvaol25c6"]
+
+[ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="1_3w6fu"]
+[ext_resource type="FontFile" uid="uid://tonprc7mhamh" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_fx388"]
+[ext_resource type="Script" uid="uid://s1nifp15u4q2" path="res://Scripts/explanations.gd" id="1_rnxdc"]
+
+[node name="Explanations" type="Node2D"]
+script = ExtResource("1_rnxdc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.265795, 0.263179, 0.0463758, 1)
+offset_right = 1282.0
+offset_bottom = 723.0
+texture = ExtResource("1_3w6fu")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_top = 9.0
+offset_right = 1280.0
+offset_bottom = 606.0
+theme_override_fonts/normal_font = ExtResource("1_fx388")
+theme_override_font_sizes/normal_font_size = 25
+text = "Dans l’ombre, ils attendent.
+Et dès que vous détournez le regard… ils avancent.
+
+Pour survivre, vous devez rejoindre la sortie.
+Mais les créatures d’Occuloss rôdent.
+
+Leurs corps ne bougent que lorsqu’ils échappent à votre regard.
+Une simple lampe suffit à les figer.
+Mais éteignez-la… ou tournez les yeux…
+et ils se téléportent. Se rapprochent. Sans bruit.
+
+Regardez-les pour les retenir. Éclairez-les pour les stopper.
+Mais ne perdez jamais de vue votre objectif.
+Ils n’attendent qu’un instant d’inattention."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skip" type="MenuButton" parent="."]
+offset_left = 424.0
+offset_top = 586.0
+offset_right = 816.0
+offset_bottom = 684.0
+theme_override_fonts/font = ExtResource("1_fx388")
+theme_override_font_sizes/font_size = 30
+text = "Cliquer ici pour passer"
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 23.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Skip" to="." method="_on_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]
