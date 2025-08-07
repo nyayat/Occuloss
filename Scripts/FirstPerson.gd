@@ -2,13 +2,15 @@ extends CharacterBody3D
 
 @onready var camera_3d = $Camera3D
 
-const SPEED = 2.5
+const RUN = 5.
+const WALK = 2.5
 #const JUMP_VELOCITY = 4.5
 const CAMERA_SENS = 0.003
 const CONTROLLER_SENS = 2.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var is_running = false
 
 
 func _ready():
@@ -47,6 +49,8 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var SPEED = RUN if is_running else WALK
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
