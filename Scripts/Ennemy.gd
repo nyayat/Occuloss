@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 @onready var ctx: Context = get_node("/root/PauseHistory")
 
 var speed: float = 3.0
@@ -179,4 +178,4 @@ func teleport_around_player():
 			audio_stream_player_3d.play(0.)
 			return
 
-	print("Teleport failed: couldn't find a valid spot behind the player")
+	# print("Teleport failed: couldn't find a valid spot behind the player")

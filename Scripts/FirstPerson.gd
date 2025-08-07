@@ -47,16 +47,15 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	
 	if stamina <= 1 and not force_pause:
-		print("PAUSE : ", stamina)
+		# print("PAUSE : ", stamina)
 		force_pause = true
 		pause_timer = pause_delay
-		
+
 	if force_pause:  # if disc
 		pause_timer -= delta
 		if pause_timer <= 0.0:
-			print("COURS : ", stamina)
+			# print("COURS : ", stamina)
 			force_pause = false
 	# Add the gravity.
 	if not is_on_floor():
@@ -71,8 +70,8 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	is_running = Input.is_action_pressed("run") && stamina > 1.
-	if not force_pause: 
-		if is_running :
+	if not force_pause:
+		if is_running:
 			stamina -= 0.05
 		else:
 			stamina = min(stamina + 0.01, MAX_STAMINA)
