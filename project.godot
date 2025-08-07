@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Weeping Angels"
+config/name="Occuloss"
 config/description="Jeu horrifique"
 config/version="1.0.0"
 run/main_scene="uid://cnr6yvkeqp15p"

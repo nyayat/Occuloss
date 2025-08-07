@@ -19,6 +19,7 @@ offset_left = 36.0
 offset_top = 36.0
 offset_right = 1236.0
 offset_bottom = 644.0
+theme_override_fonts/normal_font = ExtResource("3_7xmno")
 
 [node name="MenuButton" type="MenuButton" parent="."]
 offset_left = 544.0
