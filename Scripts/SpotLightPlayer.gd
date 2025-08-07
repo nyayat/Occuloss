@@ -12,7 +12,7 @@ var light_luminosity = 1.5
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_light"):
 		activate = !activate
-		print("Light toggled. Active:", activate)
+		#print("Light toggled. Active:", activate)
 
 
 func _physics_process(delta):
@@ -42,10 +42,10 @@ func discharge(delta):
 	if force_pause:
 		return
 	battery -= delta
-	print("décharge.... : ", battery)
+	#print("décharge.... : ", battery)
 	if (battery) <= 0:
 		battery = 0
-		print("plus de batterie... : ", battery)
+		#print("plus de batterie... : ", battery)
 		pauseActivate()
 
 
@@ -55,4 +55,4 @@ func charge(delta):
 	if force_pause or battery == battery_max:
 		return
 	battery += delta / 2
-	print("chargement : ", battery)
+	#print("chargement : ", battery)

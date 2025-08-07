@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed: float = 2.0
+var speed: float = 3.0
 var player: CharacterBody3D
 var camera: Camera3D
 

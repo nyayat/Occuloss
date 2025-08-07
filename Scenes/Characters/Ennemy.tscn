@@ -1,23 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd1isrgkxku2g"]
+[gd_scene load_steps=6 format=3 uid="uid://dd1isrgkxku2g"]
 
 [ext_resource type="Script" uid="uid://bxhc30251ktjy" path="res://Scripts/Ennemy.gd" id="1_d1dyc"]
-[ext_resource type="PackedScene" uid="uid://b8nvx51ml8ogq" path="res://Assets/kaykit_character_pack_skeletons/Characters/gltf/Skeleton_Minion.glb" id="2_trlos"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
+[ext_resource type="PackedScene" uid="uid://i5jujitwofn0" path="res://Assets/Untitled.glb" id="2_trlos"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trlos"]
+emission_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
+material = SubResource("StandardMaterial3D_trlos")
+
 [node name="Ennemy" type="CharacterBody3D"]
 script = ExtResource("1_d1dyc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_t7fwh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_t7fwh")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="Skeleton_Minion" parent="." instance=ExtResource("2_trlos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.905767, 0)
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+mesh = SubResource("CapsuleMesh_t7fwh")
+skeleton = NodePath("../..")
+
+[node name="Untitled" parent="Mesh" instance=ExtResource("2_trlos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

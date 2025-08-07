@@ -1,15 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhtwf780j0hnm"]
+[gd_scene load_steps=9 format=3 uid="uid://bhtwf780j0hnm"]
 
 [ext_resource type="Script" uid="uid://cg254yafrnc7p" path="res://Scripts/FirstPerson.gd" id="1_0el0d"]
 [ext_resource type="Script" uid="uid://bwg4oabdl8q7f" path="res://Scripts/SpotLightPlayer.gd" id="2_7pt4t"]
-[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/ViewShader.gdshader" id="2_o5en2"]
+[ext_resource type="Shader" uid="uid://c3trxcyebj1xh" path="res://Scripts/Shaders/ASCII.gdshader" id="3_7pt4t"]
+[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/Shaders/ViewShader.gdshader" id="5_7qdam"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t7fwh"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gc10f"]
+shader = ExtResource("3_7pt4t")
+shader_parameter/character_size = 4.0
+shader_parameter/brightness_multiplier = 1.5
+shader_parameter/invert_brightness = false
+shader_parameter/ascii_color = Color(0.990262, 0.76007, 0.755385, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8aik"]
-shader = ExtResource("2_o5en2")
+shader = ExtResource("5_7qdam")
 shader_parameter/shake = 0.015
 shader_parameter/noiseQuality = 191.2
 shader_parameter/noiseIntensity = 0.001
@@ -19,7 +28,7 @@ shader_parameter/pixelSize = 375.0
 shader_parameter/grainIntensity = 0.025
 shader_parameter/use_overlay = true
 shader_parameter/use_lens_distortion = true
-shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/overlay_color = Color(1, 1, 1, 1.86275)
 shader_parameter/lens_distortion_strength = 0.0
 
 [node name="FPPlayer" type="CharacterBody3D" groups=["Player"]]
@@ -47,13 +56,21 @@ light_color = Color(0.89, 0.883473, 0.7921, 1)
 light_energy = 1.564
 light_size = 1.0
 light_specular = 5.423
-spot_range = 15.0
+spot_range = 50.0
 spot_attenuation = 0.45
 spot_angle = 52.5
 spot_angle_attenuation = 1.7411
 script = ExtResource("2_7pt4t")
 
+[node name="ColorRect2" type="ColorRect" parent="Camera3D"]
+material = SubResource("ShaderMaterial_gc10f")
+offset_right = 1154.0
+offset_bottom = 645.0
+
 [node name="ColorRect" type="ColorRect" parent="Camera3D"]
+visible = false
+modulate = Color(1, 1, 1, 0.0470588)
+self_modulate = Color(1, 1, 1, 0.129412)
 material = SubResource("ShaderMaterial_c8aik")
 offset_right = 1154.0
 offset_bottom = 645.0

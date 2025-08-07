@@ -1,14 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://8ndhyxhd6shg"]
+[gd_scene load_steps=12 format=3 uid="uid://8ndhyxhd6shg"]
 
 [ext_resource type="PackedScene" uid="uid://bhtwf780j0hnm" path="res://Scenes/Characters/Player.tscn" id="1_ftrsn"]
 [ext_resource type="PackedScene" uid="uid://dd1isrgkxku2g" path="res://Scenes/Characters/Ennemy.tscn" id="2_q8l06"]
 [ext_resource type="PackedScene" uid="uid://bwom3fpx6q7bs" path="res://Scenes/Environnement_3d.tscn" id="3_q8l06"]
+[ext_resource type="Texture2D" uid="uid://jmqjkvyogdj3" path="res://Assets/starry_night.png" id="4_c8aik"]
+[ext_resource type="Shader" uid="uid://cdg86qrmns2dt" path="res://Scripts/Shaders/Sky.gdshader" id="5_cpag2"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ftrsn"]
 vertices = PackedVector3Array(-99.5, 0, -99.5, -99.5, 0, 99.5, 99.5, 0, 99.5, 99.5, 0, -99.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
+[sub_resource type="SphereMesh" id="SphereMesh_q8l06"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8l06"]
+transparency = 1
+albedo_texture = ExtResource("4_c8aik")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jda31"]
+shader = ExtResource("5_cpag2")
+shader_parameter/skyColor = Color(0.372982, 0.0476165, 0.132762, 1)
+shader_parameter/horizonColor = Color(0.506981, 0.0922981, 0.260237, 1)
+
+[sub_resource type="Sky" id="Sky_2u2x3"]
+sky_material = SubResource("ShaderMaterial_jda31")
+
+[sub_resource type="Environment" id="Environment_gfhlv"]
+background_mode = 1
+background_energy_multiplier = 0.13
+sky = SubResource("Sky_2u2x3")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 4.8
+reflected_light_source = 2
+
 [node name="Main" type="Node"]
+
+[node name="Ennemy" parent="." instance=ExtResource("2_q8l06")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0604214, 0.998173, 0, -0.998173, -0.0604214, 0, 18.6174, 0)
@@ -17,12 +44,18 @@ visible = false
 [node name="FPPlayer" parent="." instance=ExtResource("1_ftrsn")]
 transform = Transform3D(-0.739901, 0, -0.672715, 0, 1, 0, 0.672715, 0, -0.739901, 0, 0, -33.3717)
 
-[node name="Ennemy" parent="." instance=ExtResource("2_q8l06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.8416)
-
 [node name="Environnement" type="Node" parent="."]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Environnement"]
 navigation_mesh = SubResource("NavigationMesh_ftrsn")
 
 [node name="Environnement3D" parent="Environnement/NavigationRegion3D" instance=ExtResource("3_q8l06")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environnement"]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_q8l06")
+surface_material_override/0 = SubResource("StandardMaterial3D_q8l06")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gfhlv")

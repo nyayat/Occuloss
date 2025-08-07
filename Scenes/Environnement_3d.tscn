@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwom3fpx6q7bs"]
+[gd_scene load_steps=8 format=3 uid="uid://bwom3fpx6q7bs"]
 
 [ext_resource type="PackedScene" uid="uid://du56or8dv60ap" path="res://Assets/kaykit_halloween_bits/gltf/floor_dirt.gltf" id="1_80orc"]
+[ext_resource type="PackedScene" uid="uid://dftua3ow3lgrq" path="res://Assets/Environnement.glb" id="2_8lh86"]
+[ext_resource type="PackedScene" uid="uid://jubgd0ucswsl" path="res://Assets/kaykit_halloween_bits/gltf/tree_pine_orange_large.gltf" id="2_cb4pw"]
+[ext_resource type="PackedScene" uid="uid://bxhwtp7e55sk" path="res://Assets/kaykit_halloween_bits/gltf/tree_dead_large_decorated.gltf" id="3_v6iyo"]
+[ext_resource type="PackedScene" uid="uid://b5o03e8nueebp" path="res://Assets/kaykit_halloween_bits/gltf/arch.gltf" id="5_q4jt6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7fwh"]
 size = Vector3(100, 1, 100)
@@ -22,3 +26,19 @@ mesh = SubResource("BoxMesh_xvb4y")
 
 [node name="floor_dirt2" parent="Ground" instance=ExtResource("1_80orc")]
 transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0.103972, 0)
+visible = false
+
+[node name="Environnement" parent="Ground" instance=ExtResource("2_8lh86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="Obstacles" type="Node3D" parent="."]
+
+[node name="tree_pine_orange_large2" parent="." instance=ExtResource("2_cb4pw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.504, -0.842168, -16.196)
+
+[node name="tree_dead_large_decorated2" parent="." instance=ExtResource("3_v6iyo")]
+transform = Transform3D(-0.323637, 0, -0.946181, 0, 1, 0, 0.946181, 0, -0.323637, -0.57405, -1.40389, -14.9903)
+
+[node name="arch2" parent="." instance=ExtResource("5_q4jt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83589, -1.27309, -159.997)
+visible = false
