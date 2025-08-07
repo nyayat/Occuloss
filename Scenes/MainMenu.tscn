@@ -1,3 +1,47 @@
-[gd_scene format=3 uid="uid://cnr6yvkeqp15p"]
+[gd_scene load_steps=2 format=3 uid="uid://cnr6yvkeqp15p"]
+
+[ext_resource type="Script" uid="uid://dthcdomum4kdj" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1280.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 52
+text = "Œil qui fait peur"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 146.0
+offset_top = 146.0
+offset_right = 1142.0
+offset_bottom = 662.0
+theme_override_constants/h_separation = 284
+theme_override_constants/v_separation = 84
+script = ExtResource("1_tt5f1")
+
+[node name="Play" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
+focus_next = NodePath("../Options")
+theme_override_font_sizes/font_size = 30
+text = "Jouer"
+
+[node name="Options" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Play")
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Quit" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
+focus_previous = NodePath("../Options")
+theme_override_font_sizes/font_size = 30
+text = "Quitter"
+
+[connection signal="pressed" from="GridContainer/Play" to="GridContainer" method="_on_play_pressed"]
+[connection signal="pressed" from="GridContainer/Options" to="GridContainer" method="_on_options_pressed"]
+[connection signal="pressed" from="GridContainer/Quit" to="GridContainer" method="_on_quit_pressed"]
