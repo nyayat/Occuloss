@@ -13,7 +13,7 @@ func _ready() -> void:
 	set_volume(0.4)
 
 	var filter := AudioEffectLowPassFilter.new()
-	filter.cutoff_hz = 1500.0
+	filter.cutoff_hz = 300.0
 
 	AudioServer.add_bus_effect(index, filter, pause_filter)
 
