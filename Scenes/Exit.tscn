@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://7rejijw6wrfs"]
+
+[ext_resource type="Script" uid="uid://b14jawj25mf05" path="res://Scripts/Exit.gd" id="1_vhj0n"]
+[ext_resource type="PackedScene" uid="uid://b5o03e8nueebp" path="res://Assets/kaykit_halloween_bits/gltf/arch.gltf" id="2_04yja"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pntgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vclj6"]
+size = Vector3(3.06, 1, 1)
+
+[node name="Exit" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_vhj0n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
+mesh = SubResource("SphereMesh_pntgd")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512436, -0.280742)
+shape = SubResource("BoxShape3D_vclj6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15668, 0)
+light_energy = 7.857
+
+[node name="arch2" parent="CharacterBody3D" instance=ExtResource("2_04yja")]

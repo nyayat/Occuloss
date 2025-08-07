@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+
+@onready var ctx: Context = get_node("/root/PauseHistory")
+
 var speed: float = 3.0
 var player: CharacterBody3D
 var camera: Camera3D
@@ -101,6 +104,7 @@ func caught():
 func move_along_path(_delta):
 	if caught():
 		# print("gameOver")
+		ctx.switch_scene("res://Scenes/GameOverMenu.tscn")
 		return
 	var next_point = agent.get_next_path_position()
 	var direction = (next_point - global_transform.origin).normalized()
