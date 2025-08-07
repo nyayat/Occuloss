@@ -12,6 +12,7 @@
 script = ExtResource("1_1jju4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.484143, 0.484143, 0.484143, 1)
 offset_right = 1282.0
 offset_bottom = 723.0
 texture = ExtResource("2_1jju4")
