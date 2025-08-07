@@ -15,7 +15,7 @@ func _ready() -> void:
 # Handle navigation
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		ctx.return_to_previous()
+		_on_return_button_pressed()
 
 
 # Volume
@@ -25,8 +25,12 @@ func _on_volume_slider_changed(value: float) -> void:
 
 
 func _on_fear_slider_changed(value: float) -> void:
-	pass  # Replace with function body.
+	pass
 
 
 func _on_fun_slider_changed(value: float) -> void:
-	pass  # Replace with function body.
+	pass
+
+
+func _on_return_button_pressed() -> void:
+	ctx.return_to_previous()

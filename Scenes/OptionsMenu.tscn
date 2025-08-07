@@ -89,11 +89,8 @@ layout_mode = 2
 value = 75.0
 allow_greater = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = 146.0
-offset_top = 602.0
-offset_right = 286.0
-offset_bottom = 649.0
+[node name="Button" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 34
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jrbyj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1jju4")
@@ -102,3 +99,4 @@ text = "Retour"
 [connection signal="value_changed" from="GridContainer/Volume/HSlider" to="." method="_on_volume_slider_changed"]
 [connection signal="value_changed" from="GridContainer/Peur/HSlider" to="." method="_on_fear_slider_changed"]
 [connection signal="value_changed" from="GridContainer/Fun/HSlider" to="." method="_on_fun_slider_changed"]
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_return_button_pressed"]

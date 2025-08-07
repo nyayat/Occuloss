@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b72vxwememhhb"]
+
+[ext_resource type="Script" uid="uid://bxywft8d4gs5e" path="res://Scripts/Credits.gd" id="1_i8h6y"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_i8h6y")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 36.0
+offset_top = 36.0
+offset_right = 1236.0
+offset_bottom = 644.0
+
+[node name="MenuButton" type="MenuButton" parent="."]
+offset_left = 544.0
+offset_top = 644.0
+offset_right = 726.0
+offset_bottom = 727.0
+theme_override_font_sizes/font_size = 53
+text = "Retour"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

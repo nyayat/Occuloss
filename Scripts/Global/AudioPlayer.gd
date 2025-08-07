@@ -3,12 +3,19 @@ class_name Sound extends AudioStreamPlayer
 #const menu_music = preload("res://Assets/Musics/menusong.wav")
 const main_music = preload("res://Assets/Musics/maintheme.wav")
 
+const pause_filter = 0
+
 @onready var index = AudioServer.get_bus_index(bus)
 
 
 func _ready() -> void:
 	# Default volume
 	set_volume(0.4)
+
+	var filter := AudioEffectLowPassFilter.new()
+	filter.cutoff_hz = 1500.0
+
+	AudioServer.add_bus_effect(index, filter, pause_filter)
 
 
 ## Play an audio stream.[br][br]
@@ -40,3 +47,13 @@ func set_volume(value: float) -> void:
 ## Get the volume db
 func get_volume() -> float:
 	return db_to_linear(AudioServer.get_bus_volume_db(index))
+
+
+## Disable a sound filter
+func disable_pause_filter() -> void:
+	AudioServer.set_bus_effect_enabled(index, pause_filter, false)
+
+
+## Enable a sound filter
+func enable_pause_filter() -> void:
+	AudioServer.set_bus_effect_enabled(index, pause_filter, true)

@@ -18,3 +18,7 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	ctx.exit_game()
+
+
+func _on_credits_pressed() -> void:
+	ctx.switch_scene("res://Scenes/Credits.tscn")
