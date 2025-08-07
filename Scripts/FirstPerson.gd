@@ -5,6 +5,10 @@ extends CharacterBody3D
 
 const RUN = 5.
 const WALK = 2.5
+
+var force_pause = false
+var pause_delay := 2.5  # need to wait before running
+var pause_timer := 0.0
 #const JUMP_VELOCITY = 4.5
 const CAMERA_SENS = 0.003
 const CONTROLLER_SENS = 2.0
@@ -19,6 +23,7 @@ var stamina = MAX_STAMINA
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	force_pause = false
 
 
 func _input(event):
@@ -42,6 +47,17 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	
+	if stamina <= 1 and not force_pause:
+		print("PAUSE : ", stamina)
+		force_pause = true
+		pause_timer = pause_delay
+		
+	if force_pause:  # if disc
+		pause_timer -= delta
+		if pause_timer <= 0.0:
+			print("COURS : ", stamina)
+			force_pause = false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -55,11 +71,11 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	is_running = Input.is_action_pressed("run") && stamina > 1.
-
-	if is_running:
-		stamina -= 0.8
-	else:
-		stamina = min(stamina + 0.5, MAX_STAMINA)
+	if not force_pause: 
+		if is_running :
+			stamina -= 0.05
+		else:
+			stamina = min(stamina + 0.01, MAX_STAMINA)
 	progress_bar.set_value(stamina)
 
 	var SPEED = RUN if is_running else WALK

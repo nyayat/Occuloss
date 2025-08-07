@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="2_qwhev"]
 [ext_resource type="FontFile" uid="uid://tonprc7mhamh" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_5w4ur"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 script = ExtResource("1_lj4oq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -23,26 +23,43 @@ offset_bottom = 723.0
 texture = ExtResource("2_qwhev")
 expand_mode = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 26.0
-offset_top = 110.0
-offset_right = 958.0
-offset_bottom = 629.0
-theme_override_constants/v_separation = 80
-
-[node name="GameReturn" type="MenuButton" parent="GridContainer"]
-layout_mode = 2
+[node name="GameReturn" type="MenuButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.5
+offset_top = -143.5
+offset_right = 235.5
+offset_bottom = -53.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_5w4ur")
 theme_override_font_sizes/font_size = 30
-text = "Revenir au jeu :)"
-alignment = 0
+text = "Revenir 
+au jeu "
+autowrap_mode = 2
 
-[node name="MenuReturn" type="MenuButton" parent="GridContainer"]
-layout_mode = 2
+[node name="MenuReturn" type="MenuButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.5
+offset_top = 79.5
+offset_right = 213.5
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_5w4ur")
 theme_override_font_sizes/font_size = 30
-text = "Retour au menu principal :("
-alignment = 0
+text = "Retour 
+au menu principal "
+autowrap_mode = 2
 
-[connection signal="pressed" from="GridContainer/GameReturn" to="." method="_on_game_return_pressed"]
-[connection signal="pressed" from="GridContainer/MenuReturn" to="." method="_on_menu__return_button_pressed"]
+[connection signal="pressed" from="TextureRect/GameReturn" to="." method="_on_game_return_pressed"]
+[connection signal="pressed" from="TextureRect/MenuReturn" to="." method="_on_menu__return_button_pressed"]

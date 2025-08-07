@@ -24,5 +24,5 @@ func caught() -> bool:
 	if not player:
 		return false
 	var distance := global_transform.origin.distance_to(player.global_transform.origin)
-	print("Distance to player: ", distance)
+	
 	return distance < detection_radius

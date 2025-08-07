@@ -17,13 +17,13 @@ shape = SubResource("BoxShape3D_o1eqw")
 [node name="SpotLight3D" type="SpotLight3D" parent="shrine_candles2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 light_color = Color(1, 0.509333, 0.08, 1)
-light_energy = 2.0
-spot_range = 10.0
+light_energy = 4.0
+spot_range = 30.0
 spot_angle = 180.0
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="shrine_candles2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.6, 0)
 light_color = Color(1, 0.509333, 0.08, 1)
-light_energy = 2.0
-spot_range = 10.0
+light_energy = 4.0
+spot_range = 30.0
 spot_angle = 180.0

@@ -43,7 +43,7 @@ transform = Transform3D(1, 0, 0, 0, -0.0604214, 0.998173, 0, -0.998173, -0.06042
 visible = false
 
 [node name="FPPlayer" parent="." instance=ExtResource("1_ftrsn")]
-transform = Transform3D(-0.739901, 0, -0.672715, 0, 1, 0, 0.672715, 0, -0.739901, 0, 0, -103.337)
+transform = Transform3D(-0.739901, 0, -0.672715, 0, 1, 0, 0.672715, 0, -0.739901, -86.3116, 0, 115.262)
 
 [node name="Environnement" type="Node" parent="."]
 
@@ -64,16 +64,13 @@ environment = SubResource("Environment_gfhlv")
 [node name="Ennemypack" type="Node3D" parent="."]
 
 [node name="Ennemy" parent="Ennemypack" instance=ExtResource("2_q8l06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.8867, 0, 86.245)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.5926, 0, 118.5)
 
 [node name="Ennemy2" parent="Ennemypack" instance=ExtResource("2_q8l06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.466, 0, -111.902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4167, 0, -111.902)
 
 [node name="Ennemy3" parent="Ennemypack" instance=ExtResource("2_q8l06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7114, 0, 51.7779)
-
-[node name="Ennemy4" parent="Ennemypack" instance=ExtResource("2_q8l06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8557, 0, -92.4046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.9248, 0, 13.8623)
 
 [node name="Exit" parent="." instance=ExtResource("7_2u2x3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6814, 0.782986, -140.365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0955, 0.782986, -140.365)

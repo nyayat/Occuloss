@@ -44,7 +44,6 @@ func discharge(delta):
 	if force_pause:
 		return
 	battery -= delta
-	print("décharge.... : ", battery)
 	progress_bar.set_value(battery)
 	if (battery) <= 0:
 		battery = 0

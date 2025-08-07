@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://p1ykltt1eqvc" path="res://Scripts/victory_menu.gd" id="1_q0g6e"]
 [ext_resource type="FontFile" uid="uid://tonprc7mhamh" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_sx22n"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 script = ExtResource("1_q0g6e")
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -15,17 +15,17 @@ texture = ExtResource("2_xbebw")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 36.0
-offset_top = 36.0
-offset_right = 1236.0
-offset_bottom = 644.0
+offset_left = 444.0
+offset_top = 120.0
+offset_right = 830.0
+offset_bottom = 625.0
 theme_override_fonts/normal_font = ExtResource("3_7xmno")
 
 [node name="MenuButton" type="MenuButton" parent="."]
-offset_left = 544.0
-offset_top = 644.0
-offset_right = 726.0
-offset_bottom = 727.0
+offset_left = 479.0
+offset_top = 623.0
+offset_right = 805.0
+offset_bottom = 706.0
 theme_override_fonts/font = ExtResource("3_7xmno")
 theme_override_font_sizes/font_size = 53
 text = "Retour"
