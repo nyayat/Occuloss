@@ -68,8 +68,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(300, 26.978)
 layout_mode = 2
 value = 90.0
-allow_greater = true
-allow_lesser = true
+
+[node name="Info" type="RichTextLabel" parent="GridContainer/Peur"]
+layout_mode = 2
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Fun" type="HBoxContainer" parent="GridContainer"]
 layout_mode = 2
@@ -87,7 +92,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(300, 26.978)
 layout_mode = 2
 value = 75.0
-allow_greater = true
+
+[node name="Info" type="RichTextLabel" parent="GridContainer/Fun"]
+layout_mode = 2
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Button" type="MenuButton" parent="GridContainer"]
 layout_mode = 2
