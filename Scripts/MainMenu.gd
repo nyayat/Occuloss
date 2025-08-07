@@ -2,9 +2,11 @@ extends GridContainer
 
 @onready var audio_controller: Sound = get_node("/root/AudioPlayer")
 @onready var ctx: Context = get_node("/root/PauseHistory")
+@onready var playbtn: MenuButton = $Play
 
 
 func _ready() -> void:
+	playbtn.grab_focus()
 	audio_controller.play_music_menu()
 
 

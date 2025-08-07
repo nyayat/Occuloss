@@ -15,6 +15,7 @@ extends Node2D
 
 # Setup page
 func _ready() -> void:
+	volume_slider.grab_focus()
 	volume_slider.set_value(audio_controller.get_volume())
 	_on_fear_slider_changed(peur_slider.get_value())
 	_on_fun_slider_changed(fun_slider.get_value())

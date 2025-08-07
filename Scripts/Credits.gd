@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var ctx: Context = get_node("/root/PauseHistory")
 @onready var text = $RichTextLabel
+@onready var menu_button: MenuButton = $MenuButton
 
 
 func load_from_file(path: NodePath) -> String:
@@ -11,6 +12,7 @@ func load_from_file(path: NodePath) -> String:
 
 
 func _ready() -> void:
+	menu_button.grab_focus()
 	text.clear()
 	text.add_text(load_from_file("res://Credits.md"))
 
