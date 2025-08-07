@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://h545xykqqfsw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1280.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 52
+text = "Pause"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_top = 146.0
+offset_right = 1279.0
+offset_bottom = 720.0
