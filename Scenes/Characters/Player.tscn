@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhtwf780j0hnm"]
+[gd_scene load_steps=8 format=3 uid="uid://bhtwf780j0hnm"]
 
 [ext_resource type="Script" uid="uid://cg254yafrnc7p" path="res://Scripts/FirstPerson.gd" id="1_0el0d"]
 [ext_resource type="Script" uid="uid://bwg4oabdl8q7f" path="res://Scripts/SpotLightPlayer.gd" id="2_7pt4t"]
 [ext_resource type="Shader" uid="uid://c3trxcyebj1xh" path="res://Scripts/Shaders/ASCII.gdshader" id="3_7pt4t"]
-[ext_resource type="Shader" uid="uid://c2t7ewleqsft0" path="res://Scripts/Shaders/ViewShader.gdshader" id="5_7qdam"]
+[ext_resource type="Script" uid="uid://cdaigade4db4j" path="res://Scripts/PlayerFilter.gd" id="4_7pt4t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_t7fwh"]
 
@@ -16,20 +16,6 @@ shader_parameter/brightness_multiplier = 1.5
 shader_parameter/invert_brightness = false
 shader_parameter/ascii_color = Color(0.990262, 0.76007, 0.755385, 1)
 shader_parameter/background_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8aik"]
-shader = ExtResource("5_7qdam")
-shader_parameter/shake = 0.015
-shader_parameter/noiseQuality = 191.2
-shader_parameter/noiseIntensity = 0.001
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.1
-shader_parameter/pixelSize = 375.0
-shader_parameter/grainIntensity = 0.025
-shader_parameter/use_overlay = true
-shader_parameter/use_lens_distortion = true
-shader_parameter/overlay_color = Color(1, 1, 1, 1.86275)
-shader_parameter/lens_distortion_strength = 0.0
 
 [node name="FPPlayer" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_0el0d")
@@ -64,13 +50,4 @@ script = ExtResource("2_7pt4t")
 
 [node name="ColorRect2" type="ColorRect" parent="Camera3D"]
 material = SubResource("ShaderMaterial_gc10f")
-offset_right = 1154.0
-offset_bottom = 645.0
-
-[node name="ColorRect" type="ColorRect" parent="Camera3D"]
-visible = false
-modulate = Color(1, 1, 1, 0.0470588)
-self_modulate = Color(1, 1, 1, 0.129412)
-material = SubResource("ShaderMaterial_c8aik")
-offset_right = 1154.0
-offset_bottom = 645.0
+script = ExtResource("4_7pt4t")
