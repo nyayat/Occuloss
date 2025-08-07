@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwom3fpx6q7bs"]
+[gd_scene load_steps=8 format=3 uid="uid://bwom3fpx6q7bs"]
 
 [ext_resource type="PackedScene" uid="uid://du56or8dv60ap" path="res://Assets/kaykit_halloween_bits/gltf/floor_dirt.gltf" id="1_80orc"]
 [ext_resource type="PackedScene" uid="uid://dftua3ow3lgrq" path="res://Assets/Environnement.glb" id="2_8lh86"]
+[ext_resource type="Script" uid="uid://ybh2mkvfu50o" path="res://Scripts/environnement.gd" id="3_8fm86"]
 [ext_resource type="PackedScene" uid="uid://bpn1vuj4pmatk" path="res://Scenes/Candle.tscn" id="3_in5ee"]
+[ext_resource type="Script" uid="uid://4jepip477hao" path="res://Scripts/obstacleslumineux.gd" id="4_8fm86"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7fwh"]
 size = Vector3(100, 1, 100)
@@ -28,8 +30,10 @@ visible = false
 
 [node name="Environnement" parent="Ground" instance=ExtResource("2_8lh86")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+script = ExtResource("3_8fm86")
 
 [node name="Obstacles" type="Node3D" parent="."]
+script = ExtResource("4_8fm86")
 
 [node name="Candle" parent="Obstacles" instance=ExtResource("3_in5ee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1413, -1.5, 9.12051)
