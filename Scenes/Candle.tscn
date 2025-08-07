@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpn1vuj4pmatk"]
+
+[ext_resource type="PackedScene" uid="uid://bxh36tuo2irvq" path="res://Assets/kaykit_halloween_bits/gltf/shrine_candles.gltf" id="1_o1eqw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o1eqw"]
+
+[node name="Candle" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.795, 0, 0, 0, 1.795, 0, 0, 0, 1.795, 0, 0.892994, 0)
+shape = SubResource("BoxShape3D_o1eqw")
+
+[node name="shrine_candles2" parent="." instance=ExtResource("1_o1eqw")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="shrine_candles2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+light_color = Color(1, 0.509333, 0.08, 1)
+light_energy = 2.0
+spot_range = 10.0
+spot_angle = 180.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="shrine_candles2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.6, 0)
+light_color = Color(1, 0.509333, 0.08, 1)
+light_energy = 2.0
+spot_range = 10.0
+spot_angle = 180.0

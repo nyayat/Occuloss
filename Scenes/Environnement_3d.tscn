@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwom3fpx6q7bs"]
+[gd_scene load_steps=6 format=3 uid="uid://bwom3fpx6q7bs"]
 
 [ext_resource type="PackedScene" uid="uid://du56or8dv60ap" path="res://Assets/kaykit_halloween_bits/gltf/floor_dirt.gltf" id="1_80orc"]
 [ext_resource type="PackedScene" uid="uid://dftua3ow3lgrq" path="res://Assets/Environnement.glb" id="2_8lh86"]
-[ext_resource type="PackedScene" uid="uid://jubgd0ucswsl" path="res://Assets/kaykit_halloween_bits/gltf/tree_pine_orange_large.gltf" id="2_cb4pw"]
-[ext_resource type="PackedScene" uid="uid://bxhwtp7e55sk" path="res://Assets/kaykit_halloween_bits/gltf/tree_dead_large_decorated.gltf" id="3_v6iyo"]
-[ext_resource type="PackedScene" uid="uid://b5o03e8nueebp" path="res://Assets/kaykit_halloween_bits/gltf/arch.gltf" id="5_q4jt6"]
+[ext_resource type="PackedScene" uid="uid://bpn1vuj4pmatk" path="res://Scenes/Candle.tscn" id="3_in5ee"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t7fwh"]
 size = Vector3(100, 1, 100)
@@ -33,12 +31,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="Obstacles" type="Node3D" parent="."]
 
-[node name="tree_pine_orange_large2" parent="." instance=ExtResource("2_cb4pw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.504, -0.842168, -16.196)
+[node name="Candle" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1413, -1.5, 9.12051)
 
-[node name="tree_dead_large_decorated2" parent="." instance=ExtResource("3_v6iyo")]
-transform = Transform3D(-0.323637, 0, -0.946181, 0, 1, 0, 0.946181, 0, -0.323637, -0.57405, -1.40389, -14.9903)
+[node name="Candle2" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.0391, -3, 57.0134)
 
-[node name="arch2" parent="." instance=ExtResource("5_q4jt6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.83589, -1.27309, -159.997)
-visible = false
+[node name="Candle3" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0662, -1.5, -88.2016)
+
+[node name="Candle4" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.083, -3, -28.943)
+
+[node name="Candle5" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(0.531857, 0, -0.846834, 0, 1, 0, 0.846834, 0, 0.531857, -131.473, -1, -110.433)
+
+[node name="Candle6" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(0.531857, 0, -0.846834, 0, 1, 0, 0.846834, 0, 0.531857, -94.4354, -1, -28.091)
+
+[node name="Candle7" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(0.531857, 0, -0.846834, 0, 1, 0, 0.846834, 0, 0.531857, -137.75, -1, 115.767)
+
+[node name="Candle8" parent="Obstacles" instance=ExtResource("3_in5ee")]
+transform = Transform3D(0.531857, 0, -0.846834, 0, 1, 0, 0.846834, 0, 0.531857, -49.264, -1, 103.019)

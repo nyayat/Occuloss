@@ -1,7 +1,7 @@
 extends SpotLight3D
 
-const battery_max = 100.
-var battery = 100.
+const battery_max = 25.
+var battery = 25.
 var activate = true
 var force_pause = false
 var pause_delay := 2.5  # need to wait before start charging
@@ -42,7 +42,7 @@ func discharge(delta):
 	if force_pause:
 		return
 	battery -= delta
-	#print("décharge.... : ", battery)
+	print("décharge.... : ", battery)
 	if (battery) <= 0:
 		battery = 0
 		#print("plus de batterie... : ", battery)
