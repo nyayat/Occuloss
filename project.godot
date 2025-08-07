@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="Weeping Angels"
+config/description="Jeu horrifique"
+config/version="1.0.0"
 run/main_scene="uid://8ndhyxhd6shg"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [global_group]
 
