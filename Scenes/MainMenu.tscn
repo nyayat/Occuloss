@@ -28,6 +28,7 @@ layout_mode = 2
 focus_next = NodePath("../Options")
 theme_override_font_sizes/font_size = 30
 text = "Jouer"
+alignment = 0
 
 [node name="Options" type="MenuButton" parent="GridContainer"]
 layout_mode = 2
@@ -35,13 +36,24 @@ focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Play")
 theme_override_font_sizes/font_size = 30
 text = "Options"
+alignment = 0
+
+[node name="Credits" type="MenuButton" parent="GridContainer"]
+layout_mode = 2
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Play")
+theme_override_font_sizes/font_size = 30
+text = "Crédits"
+alignment = 0
 
 [node name="Quit" type="MenuButton" parent="GridContainer"]
 layout_mode = 2
 focus_previous = NodePath("../Options")
 theme_override_font_sizes/font_size = 30
 text = "Quitter"
+alignment = 0
 
 [connection signal="pressed" from="GridContainer/Play" to="GridContainer" method="_on_play_pressed"]
 [connection signal="pressed" from="GridContainer/Options" to="GridContainer" method="_on_options_pressed"]
+[connection signal="pressed" from="GridContainer/Credits" to="GridContainer" method="_on_options_pressed"]
 [connection signal="pressed" from="GridContainer/Quit" to="GridContainer" method="_on_quit_pressed"]

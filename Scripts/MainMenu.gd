@@ -1,15 +1,20 @@
 extends GridContainer
 
-@onready var switcher = get_node("/root/PauseHistory")
+@onready var audio_controller: Sound = get_node("/root/AudioPlayer")
+@onready var ctx: Context = get_node("/root/PauseHistory")
+
+
+func _ready() -> void:
+	audio_controller.play_music_menu()
 
 
 func _on_play_pressed() -> void:
-	switcher.switch_scene("res://Scenes/House.tscn")
+	ctx.switch_scene("res://Scenes/House.tscn")
 
 
 func _on_options_pressed() -> void:
-	switcher.switch_scene("res://Scenes/OptionsMenu.tscn")
+	ctx.switch_scene("res://Scenes/OptionsMenu.tscn")
 
 
 func _on_quit_pressed() -> void:
-	switcher.exit_game()
+	ctx.exit_game()

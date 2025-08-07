@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://8ndhyxhd6shg"]
+[gd_scene load_steps=13 format=3 uid="uid://8ndhyxhd6shg"]
 
 [ext_resource type="PackedScene" uid="uid://bhtwf780j0hnm" path="res://Scenes/Characters/Player.tscn" id="1_ftrsn"]
+[ext_resource type="Script" uid="uid://brnlauqyrvlll" path="res://Scripts/House.gd" id="1_jda31"]
 [ext_resource type="PackedScene" uid="uid://dd1isrgkxku2g" path="res://Scenes/Characters/Ennemy.tscn" id="2_q8l06"]
 [ext_resource type="PackedScene" uid="uid://bwom3fpx6q7bs" path="res://Scenes/Environnement_3d.tscn" id="3_q8l06"]
 [ext_resource type="Texture2D" uid="uid://jmqjkvyogdj3" path="res://Assets/starry_night.png" id="4_c8aik"]
@@ -34,6 +35,7 @@ ambient_light_energy = 4.8
 reflected_light_source = 2
 
 [node name="Main" type="Node"]
+script = ExtResource("1_jda31")
 
 [node name="Ennemy" parent="." instance=ExtResource("2_q8l06")]
 

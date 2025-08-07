@@ -1,7 +1,7 @@
 class_name Sound extends AudioStreamPlayer
 
-#const menu_music = preload("res://assets/Musics/menusong.wav")
-#const level_music = preload("res://assets/Musics/levelsong.wav")
+#const menu_music = preload("res://Assets/Musics/menusong.wav")
+const main_music = preload("res://Assets/Musics/maintheme.wav")
 
 @onready var index = AudioServer.get_bus_index(bus)
 
@@ -22,8 +22,8 @@ func _play_music(music: AudioStream) -> void:
 		play()
 
 
-func play_music_level() -> void:
-	#_play_music(level_music)
+func play_main_music() -> void:
+	_play_music(main_music)
 	pass
 
 
