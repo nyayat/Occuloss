@@ -14,6 +14,8 @@ var teleport_delay := 2.5  # seconds to wait after teleport
 var teleport_timer := 0.0
 var visible_lights: Array[SpotLight3D] = []
 
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
@@ -174,6 +176,7 @@ func teleport_around_player():
 			global_transform.origin = nav_pos
 			agent.target_position = player.global_transform.origin
 			print("Enemy teleported behind player to:", nav_pos)
+			audio_stream_player_3d.play(0.)
 			return
 
 	print("Teleport failed: couldn't find a valid spot behind the player")

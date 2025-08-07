@@ -1,6 +1,6 @@
 class_name Sound extends AudioStreamPlayer
 
-#const menu_music = preload("res://Assets/Musics/menusong.wav")
+const menu_music = preload("res://Assets/Musics/maintheme.wav")  # en attendant...
 const main_music = preload("res://Assets/Musics/maintheme.wav")
 
 const pause_filter = 0
@@ -22,6 +22,7 @@ func _ready() -> void:
 ## Example usage: When the node enters the scene tree for the first time.
 func _play_music(music: AudioStream) -> void:
 	if stream == music:
+		seek(0.)  # redémarre le son
 		return
 
 	stream = music
@@ -35,7 +36,7 @@ func play_main_music() -> void:
 
 
 func play_music_menu() -> void:
-	#_play_music(menu_music)
+	_play_music(menu_music)
 	pass
 
 

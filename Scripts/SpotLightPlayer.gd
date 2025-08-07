@@ -8,6 +8,8 @@ var pause_delay := 2.5  # need to wait before start charging
 var pause_timer := 0.0
 var light_luminosity = 1.5
 
+@onready var progress_bar: ProgressBar = $"../../LampeTorche/ProgressBar"
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("toggle_light"):
@@ -43,6 +45,7 @@ func discharge(delta):
 		return
 	battery -= delta
 	print("décharge.... : ", battery)
+	progress_bar.set_value(battery)
 	if (battery) <= 0:
 		battery = 0
 		#print("plus de batterie... : ", battery)
@@ -56,3 +59,4 @@ func charge(delta):
 		return
 	battery += delta / 2
 	#print("chargement : ", battery)
+	progress_bar.set_value(battery)

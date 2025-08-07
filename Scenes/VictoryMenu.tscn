@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx5j6vmfk10hv"]
+[gd_scene load_steps=3 format=3 uid="uid://bx5j6vmfk10hv"]
 
 [ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="1_1g5mp"]
+[ext_resource type="FontFile" uid="uid://tonprc7mhamh" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_sx22n"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,6 +14,7 @@ expand_mode = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 1280.0
 offset_bottom = 724.0
+theme_override_fonts/normal_font = ExtResource("2_sx22n")
 theme_override_font_sizes/normal_font_size = 52
 text = "Tu t'es échappé...."
 fit_content = true

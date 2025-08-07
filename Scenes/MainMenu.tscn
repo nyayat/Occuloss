@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnr6yvkeqp15p"]
+[gd_scene load_steps=4 format=3 uid="uid://cnr6yvkeqp15p"]
 
 [ext_resource type="Texture2D" uid="uid://bbhwmqtxswm33" path="res://Assets/MENU.png" id="1_853f1"]
 [ext_resource type="Script" uid="uid://dthcdomum4kdj" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="FontFile" uid="uid://tonprc7mhamh" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_8saeu"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.659978, 0.659978, 0.659978, 1)
 offset_right = 1282.0
 offset_bottom = 723.0
 texture = ExtResource("1_853f1")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 901.0
-offset_top = 561.0
-offset_right = 1350.0
-offset_bottom = 672.0
+offset_left = 657.0
+offset_top = 604.0
+offset_right = 1269.0
+offset_bottom = 715.0
+theme_override_fonts/normal_font = ExtResource("2_8saeu")
 theme_override_font_sizes/normal_font_size = 36
 text = "Œil qui fait peur"
 fit_content = true
@@ -24,10 +27,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 44.0
-offset_top = 146.0
-offset_right = 1219.0
-offset_bottom = 662.0
+offset_left = 508.0
+offset_top = 161.0
+offset_right = 869.0
+offset_bottom = 677.0
 theme_override_constants/h_separation = 284
 theme_override_constants/v_separation = 84
 script = ExtResource("1_tt5f1")
@@ -35,6 +38,7 @@ script = ExtResource("1_tt5f1")
 [node name="Play" type="MenuButton" parent="GridContainer"]
 layout_mode = 2
 focus_next = NodePath("../Options")
+theme_override_fonts/font = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 30
 text = "Jouer"
 alignment = 0
@@ -43,6 +47,7 @@ alignment = 0
 layout_mode = 2
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Play")
+theme_override_fonts/font = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 30
 text = "Options"
 alignment = 0
@@ -51,6 +56,7 @@ alignment = 0
 layout_mode = 2
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Play")
+theme_override_fonts/font = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 30
 text = "Crédits"
 alignment = 0
@@ -58,6 +64,7 @@ alignment = 0
 [node name="Quit" type="MenuButton" parent="GridContainer"]
 layout_mode = 2
 focus_previous = NodePath("../Options")
+theme_override_fonts/font = ExtResource("2_8saeu")
 theme_override_font_sizes/font_size = 30
 text = "Quitter"
 alignment = 0

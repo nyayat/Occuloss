@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var camera_3d = $Camera3D
+@onready var progress_bar: ProgressBar = $Stamina/ProgressBar
 
 const RUN = 5.
 const WALK = 2.5
@@ -11,6 +12,9 @@ const CONTROLLER_SENS = 2.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_running = false
+
+var MAX_STAMINA = 100.
+var stamina = MAX_STAMINA
 
 
 func _ready():
@@ -49,7 +53,15 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
+	is_running = Input.is_action_pressed("run") && stamina > 1.
+
+	if is_running:
+		stamina -= 0.8
+	else:
+		stamina = min(stamina + 0.5, MAX_STAMINA)
+	progress_bar.set_value(stamina)
+
 	var SPEED = RUN if is_running else WALK
 	if direction:
 		velocity.x = direction.x * SPEED
